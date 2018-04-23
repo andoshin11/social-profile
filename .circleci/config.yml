@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Invoke Cloud Functions
-          command: curl https://us-central1-profile-as-code-a96fa.cloudfunctions.net/default
+          command: curl $FUNCTION_URL
     branches:
       only:
         - master
