@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: byrnedo/alpine-curl:latest
+    steps:
+      - checkout
+      - run:
+          name: Invoke Clour Functions
+          command: curl https://us-central1-profile-as-code-a96fa.cloudfunctions.net/default
+    branches:
+      only:
+        - master
