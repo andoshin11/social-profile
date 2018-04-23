@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Invoke Clour Functions
+          name: Invoke Cloud Functions
           command: curl https://us-central1-profile-as-code-a96fa.cloudfunctions.net/default
     branches:
       only:
