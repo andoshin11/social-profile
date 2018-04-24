@@ -2,12 +2,16 @@ version: 2
 jobs:
   build:
     docker:
-      - image: byrnedo/alpine-curl:latest
+      - image: google/cloud-sdk
+    working_directory: ~/repo
     steps:
       - checkout
       - run:
-          name: Invoke Cloud Functions
-          command: curl $FUNCTION_URL
+          name: Decode Client Secret
+          command: echo "$CLIENT_SECRET" | base64 -i --decode > ./client-secret.json
+      - run:
+          name: Get Access Token
+          command: curl $FUNCTION_URL -H "Authorization:Bearer $(GOOGLE_APPLICATION_CREDENTIALS=./client-secret.json gcloud auth application-default print-access-token)"
     branches:
       only:
         - master
