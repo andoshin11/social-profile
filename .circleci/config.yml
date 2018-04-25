@@ -10,8 +10,8 @@ jobs:
           name: Decode Client Secret
           command: echo "$CLIENT_SECRET" | base64 -i --decode > ./client-secret.json
       - run:
-          name: Get Access Token
+          name: Invoke Cloud Functions
           command: curl $FUNCTION_URL -H "Authorization:Bearer $(GOOGLE_APPLICATION_CREDENTIALS=./client-secret.json gcloud auth application-default print-access-token)"
     branches:
       only:
-        - master
+        - develop
