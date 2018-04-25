@@ -14,4 +14,4 @@ jobs:
           command: curl $FUNCTION_URL -H "Authorization:Bearer $(GOOGLE_APPLICATION_CREDENTIALS=./client-secret.json gcloud auth application-default print-access-token)"
     branches:
       only:
-        - develop
+        - master
